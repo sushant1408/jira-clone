@@ -10,4 +10,17 @@ const createWorkspaceSchema = z.object({
     .optional(),
 });
 
-export { createWorkspaceSchema };
+const updateWorkspaceSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .nonempty("Name must contain at least 1 character(s)")
+    .optional(),
+  image: z
+    .string()
+    .transform((value) => (value === "" ? undefined : value))
+    .or(z.instanceof(File))
+    .optional(),
+});
+
+export { createWorkspaceSchema, updateWorkspaceSchema };

@@ -1,5 +1,8 @@
+"use client";
+
 import { SettingsIcon, UsersIcon } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   GoCheckCircle,
   GoCheckCircleFill,
@@ -7,6 +10,7 @@ import {
   GoHomeFill,
 } from "react-icons/go";
 
+import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import {
   SidebarGroup,
   SidebarMenu,
@@ -17,7 +21,7 @@ import {
 const routes = [
   {
     label: "Home",
-    href: "/",
+    href: "",
     icon: GoHome,
     activeIcon: GoHomeFill,
   },
@@ -42,15 +46,19 @@ const routes = [
 ];
 
 const Navigation = () => {
+  const pathname = usePathname();
+  const workspaceId = useWorkspaceId();
+
   return (
     <SidebarGroup>
       <SidebarMenu>
         {routes.map((item) => {
-          const isActive = false;
+          const fullHref = `/workspaces/${workspaceId}${item.href}`;
+          const isActive = pathname === fullHref;
           const Icon = isActive ? item.activeIcon : item.icon;
 
           return (
-            <Link href={item.href} key={item.href}>
+            <Link href={fullHref} key={item.href}>
               <SidebarMenuItem>
                 <SidebarMenuButton
                   isActive={isActive}
