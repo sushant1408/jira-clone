@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { InferRequestType, InferResponseType } from "hono";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 import { client } from "@/lib/hono";
 
@@ -24,7 +25,11 @@ const useRegister = () => {
       return await response.json();
     },
     onSuccess: () => {
+      toast.success("Registered");
       router.refresh();
+    },
+    onError: () => {
+      toast.error("Failed to register");
     },
   });
 
