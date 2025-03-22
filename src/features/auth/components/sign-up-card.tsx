@@ -61,7 +61,7 @@ const SignUpCard = () => {
       <div className="px-7">
         <DottedSeparator />
       </div>
-      <CardContent className="p-7">
+      <CardContent className="px-7">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
@@ -110,7 +110,7 @@ const SignUpCard = () => {
             />
 
             <Button type="submit" disabled={isPending} size="lg" className="w-full">
-              Login
+              Register
             </Button>
           </form>
         </Form>
@@ -118,7 +118,7 @@ const SignUpCard = () => {
       <div className="px-7">
         <DottedSeparator />
       </div>
-      <CardContent className="p-7 flex flex-col gap-y-4">
+      <CardContent className="px-7 flex flex-col gap-y-4">
         <Button
           variant="secondary"
           size="lg"

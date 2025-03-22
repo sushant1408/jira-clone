@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { InferRequestType, InferResponseType } from "hono";
+import { useRouter } from "next/navigation";
 
 import { client } from "@/lib/hono";
 
@@ -11,6 +12,7 @@ type RequestType = InferRequestType<
 >["json"];
 
 const useRegister = () => {
+  const router = useRouter();
   const mutation = useMutation<ResponseType, Error, RequestType>({
     mutationFn: async (json) => {
       const response = await client.api.auth.register.$post({ json });
@@ -20,6 +22,9 @@ const useRegister = () => {
       }
 
       return await response.json();
+    },
+    onSuccess: () => {
+      router.refresh();
     },
   });
 
