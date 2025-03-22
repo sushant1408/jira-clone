@@ -5,7 +5,7 @@ interface LogoProps {
   width?: number;
 }
 
-const Logo = ({ height = 152, width = 48 }: LogoProps) => {
+const Logo = ({ width = 48, height = 48 }: LogoProps) => {
   return (
     <div className="flex items-center gap-2">
       <Image src="/logo.svg" alt="logo" height={height} width={width} />
