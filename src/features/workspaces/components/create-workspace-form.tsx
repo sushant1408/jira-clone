@@ -108,8 +108,8 @@ const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
                           />
                         </div>
                       ) : (
-                        <Avatar className="size-[72px]">
-                          <AvatarFallback>
+                        <Avatar className="size-[72px] rounded-md">
+                          <AvatarFallback className="rounded-md">
                             <ImageIcon className="size-[36px] text-neutral-400" />
                           </AvatarFallback>
                         </Avatar>
@@ -128,7 +128,7 @@ const CreateWorkspaceForm = ({ onCancel }: CreateWorkspaceFormProps) => {
                           onChange={handleImageChange}
                         />
                         <Button
-                          type="submit"
+                          type="button"
                           disabled={isPending}
                           variant="tertiary"
                           size="xs"

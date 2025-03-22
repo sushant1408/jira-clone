@@ -3,11 +3,12 @@ import Link from "next/link";
 import {
   Sidebar,
   SidebarContent,
-  SidebarHeader
+  SidebarHeader,
 } from "@/components/ui/sidebar";
 import { DottedSeparator } from "./dotted-separator";
 import { Logo } from "./logo";
 import { Navigation } from "./navigation";
+import { WorkspaceSwitcher } from "./workspace-switcher";
 
 const AppSidebar = () => {
   return (
@@ -17,7 +18,9 @@ const AppSidebar = () => {
           <Logo />
         </Link>
       </SidebarHeader>
-      <DottedSeparator className="my-4" />
+      <DottedSeparator className="my-4 px-4" />
+      <WorkspaceSwitcher />
+      <DottedSeparator className="my-4 px-4" />
       <SidebarContent>
         <Navigation />
       </SidebarContent>
