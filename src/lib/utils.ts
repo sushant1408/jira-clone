@@ -9,11 +9,6 @@ export function generateInviteCode(length: number) {
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-  // let result = "";
-
-  // for (let i = 0; i < length; i++) {
-  //   result += characters.charAt(Math.floor(Math.random() * characters.length));
-  // }
   /**
    * first generates an array of length provided in "length" arg, populating it by
    * randomly picking a char from 0 to 62 (length of "characters") from "characters" e.g. characters[12], etc
@@ -25,4 +20,11 @@ export function generateInviteCode(length: number) {
   ).join("");
 
   return code;
+}
+
+export function snakeToTitleCase(str: string) {
+  return str
+    .toLowerCase()
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
 }
