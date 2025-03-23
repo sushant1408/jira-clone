@@ -8,7 +8,7 @@ const createProjectSchema = z.object({
       z.string().transform((value) => (value === "" ? undefined : value)),
     ])
     .optional(),
-  workspaceId: z.string(),
+  workspaceId: z.string().trim().nonempty("Required"),
 });
 
 const updateProjectSchema = z.object({

@@ -1,16 +1,9 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ImageIcon } from "lucide-react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { ChangeEvent, useRef } from "react";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { DottedSeparator } from "@/components/dotted-separator";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,18 +12,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { useCreateWorkspace } from "../api/use-create-workspace";
-import { createWorkspaceSchema } from "../form-schemas";
 import { useJoinWorkspace } from "../api/use-join-workspace";
 import { useInviteCodeId } from "../hooks/use-invite-code";
 import { useWorkspaceId } from "../hooks/use-workspace-id";
