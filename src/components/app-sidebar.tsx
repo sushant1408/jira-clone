@@ -8,6 +8,7 @@ import {
 import { DottedSeparator } from "./dotted-separator";
 import { Logo } from "./logo";
 import { Navigation } from "./navigation";
+import { Projects } from "./projects";
 import { WorkspaceSwitcher } from "./workspace-switcher";
 
 const AppSidebar = () => {
@@ -18,11 +19,13 @@ const AppSidebar = () => {
           <Logo />
         </Link>
       </SidebarHeader>
-      <DottedSeparator className="my-4 px-4" />
+      <DottedSeparator className="mb-4 px-4" />
       <WorkspaceSwitcher />
-      <DottedSeparator className="my-4 px-4" />
+      <DottedSeparator className="mt-4 mb-2 px-4" />
       <SidebarContent>
         <Navigation />
+        <DottedSeparator className="mb-2 px-4" />
+        <Projects />
       </SidebarContent>
     </Sidebar>
   );
