@@ -180,12 +180,12 @@ const DataKanban = ({ data, onChange }: DataKanbanProps) => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="flex overflow-x-auto">
+      <div className="flex overflow-x-auto gap-x-3">
         {boards.map((board) => {
           return (
             <div
               key={board}
-              className="flex-1 mx-2 bg-muted p-1.5 rounded-md min-w-[200px]"
+              className="flex-1 bg-muted p-1.5 rounded-md min-w-[200px]"
             >
               <KanbanColumnHeader
                 board={board}

@@ -1,0 +1,40 @@
+import { format } from "date-fns";
+import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+
+interface ToolbarProps {
+  date: Date;
+  onNavigate: (action: "PREV" | "NEXT" | "TODAY") => void;
+}
+
+const Toolbar = ({ date, onNavigate }: ToolbarProps) => {
+  return (
+    <div className="flex mb-4 gap-x-2 items-center w-full lg:w-auto justify-center lg:justify-start">
+      <Button
+        onClick={() => onNavigate("PREV")}
+        size="icon"
+        variant="secondary"
+      >
+        <ChevronLeftIcon className="size-4" />
+      </Button>
+      <Button onClick={() => onNavigate("TODAY")} size="sm" variant="secondary">
+        Today
+      </Button>
+      <Button
+        onClick={() => onNavigate("NEXT")}
+        size="icon"
+        variant="secondary"
+      >
+        <ChevronRightIcon className="size-4" />
+      </Button>
+
+      <div className="flex items-center border border-input rounded-md px-3 py-2 h-8 justify-center w-full lg:w-auto mx-auto">
+        <CalendarIcon className="size-4 mr-2" />
+        <p className="text-sm">{format(date, "MMMM yyyy")}</p>
+      </div>
+    </div>
+  );
+};
+
+export { Toolbar };
