@@ -17,9 +17,10 @@ const updateWorkspaceSchema = z.object({
     .nonempty("Name must contain at least 1 character(s)")
     .optional(),
   image: z
-    .string()
-    .transform((value) => (value === "" ? undefined : value))
-    .or(z.instanceof(File))
+    .union([
+      z.instanceof(File),
+      z.string().transform((value) => (value === "" ? undefined : value)),
+    ])
     .optional(),
 });
 
