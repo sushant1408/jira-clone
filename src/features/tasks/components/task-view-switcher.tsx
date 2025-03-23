@@ -2,6 +2,7 @@
 
 import { LoaderIcon, PlusIcon } from "lucide-react";
 import { useQueryState } from "nuqs";
+import { useCallback } from "react";
 
 import { DottedSeparator } from "@/components/dotted-separator";
 import { Button } from "@/components/ui/button";
@@ -10,15 +11,18 @@ import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { useGetTasks } from "../api/use-get-tasks";
 import { useCreateTaskModal } from "../hooks/use-create-task-modal";
 import { useTaskFilters } from "../hooks/use-task-filters";
+import { TaskStatus } from "../types";
 import { DataFilters } from "./data-filters";
+import { DataKanban } from "./kanban-view/data-kanban";
 import { columns } from "./table-view/columns";
 import { DataTable } from "./table-view/data-table";
+import { useBulkUpdateTasks } from "../api/use-bulk-update-tasks";
 
 const TaskViewSwitcher = () => {
   const [{ assigneeId, dueDate, projectId, search, status }] = useTaskFilters();
   const [view, setView] = useQueryState("task-view", { defaultValue: "table" });
 
-  const { open } = useCreateTaskModal();
+  const { setStates } = useCreateTaskModal();
 
   const workspaceId = useWorkspaceId();
   const { data: tasks, isLoading: isTasksLoading } = useGetTasks({
@@ -29,6 +33,14 @@ const TaskViewSwitcher = () => {
     search,
     status,
   });
+  const { mutate: bulkUpdate, isPending } = useBulkUpdateTasks();
+
+  const onKanbanChange = useCallback(
+    (tasks: { $id: string; status: TaskStatus; position: number }[]) => {
+      bulkUpdate({ json: { tasks } });
+    },
+    [bulkUpdate]
+  );
 
   return (
     <Tabs
@@ -49,7 +61,18 @@ const TaskViewSwitcher = () => {
               Calendar
             </TabsTrigger>
           </TabsList>
-          <Button size="sm" className="w-full lg:w-auto" onClick={open}>
+          <Button
+            size="sm"
+            className="w-full lg:w-auto"
+            onClick={() => {
+              setStates({
+                isOpen: true,
+                initialStatus: status,
+                initialAssignee: assigneeId,
+                initialProject: projectId,
+              });
+            }}
+          >
             <PlusIcon />
             New
           </Button>
@@ -69,7 +92,10 @@ const TaskViewSwitcher = () => {
               <DataTable columns={columns} data={tasks?.documents ?? []} />
             </TabsContent>
             <TabsContent value="kanban" className="mt-0">
-              Data kanban
+              <DataKanban
+                data={tasks?.documents ?? []}
+                onChange={onKanbanChange}
+              />
             </TabsContent>
             <TabsContent value="calendar" className="mt-0">
               Data calendar

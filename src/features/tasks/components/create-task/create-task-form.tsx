@@ -1,5 +1,4 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -26,10 +25,12 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { MemberAvatar } from "@/features/members/components/member-avatar";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
+import { useProjectId } from "@/features/projects/hooks/use-project-id";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { cn } from "@/lib/utils";
 import { useCreateTask } from "../../api/use-create-task";
 import { createTaskSchema } from "../../form-schemas";
+import { useCreateTaskModal } from "../../hooks/use-create-task-modal";
 import { TaskStatus } from "../../types";
 
 interface CreateTaskFormProps {
@@ -50,8 +51,11 @@ const CreateTaskForm = ({
   memberOptions,
   projectOptions,
 }: CreateTaskFormProps) => {
-  const router = useRouter();
   const workspaceId = useWorkspaceId();
+  const projectId = useProjectId();
+
+  const { initialStatus, initialProject, initialAssignee } =
+    useCreateTaskModal();
 
   const { mutate, isPending } = useCreateTask();
 
@@ -59,6 +63,13 @@ const CreateTaskForm = ({
     resolver: zodResolver(createTaskSchema),
     defaultValues: {
       workspaceId,
+      status: initialStatus ? (initialStatus as TaskStatus) : undefined,
+      projectId: initialProject
+        ? initialProject
+        : projectId
+        ? projectId
+        : undefined,
+      assigneeId: initialAssignee ? initialAssignee : undefined,
     },
   });
 

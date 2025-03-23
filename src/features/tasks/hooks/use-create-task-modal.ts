@@ -1,20 +1,39 @@
-import { parseAsBoolean, useQueryState } from "nuqs";
+import { parseAsBoolean, parseAsString, useQueryStates } from "nuqs";
 
 const useCreateTaskModal = () => {
-  const [isOpen, setIsOpen] = useQueryState(
-    "create-task",
-    parseAsBoolean.withDefault(false).withOptions({ clearOnDefault: true })
+  const [
+    { isOpen, initialStatus, initialAssignee, initialProject },
+    setStates,
+  ] = useQueryStates(
+    {
+      isOpen: parseAsBoolean.withDefault(false),
+      initialStatus: parseAsString,
+      initialProject: parseAsString,
+      initialAssignee: parseAsString,
+    },
+    {
+      clearOnDefault: true,
+      urlKeys: {
+        isOpen: "create-task",
+        initialStatus: "initial-status",
+        initialProject: "initial-project",
+        initialAssignee: "initial-assignee",
+      },
+    }
   );
 
-  const open = () => setIsOpen(true);
+  const open = () => setStates({ isOpen: true });
 
-  const close = () => setIsOpen(false);
+  const close = () => setStates(null);
 
   return {
     isOpen,
+    initialStatus,
+    initialAssignee,
+    initialProject,
     open,
     close,
-    setIsOpen,
+    setStates,
   };
 };
 
