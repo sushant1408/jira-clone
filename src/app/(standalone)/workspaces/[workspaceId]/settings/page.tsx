@@ -8,7 +8,7 @@ interface WorkspaceIdSettingsPageProps {
   params: Promise<{ workspaceId: string }>;
 }
 
-export default async function WorkspaceIdSettingsPage({
+export default async function WorkspaceSettingsPage({
   params,
 }: WorkspaceIdSettingsPageProps) {
   const user = await getCurrent();

@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 
 import { getCurrent } from "@/features/auth/queries";
-import { getWorkspaceInfo } from "@/features/workspaces/queries";
 import { JoinWorkspaceForm } from "@/features/workspaces/components/join-workspace-form";
+import { getWorkspaceInfo } from "@/features/workspaces/queries";
 
 interface JoinWorkspacePageProps {
   params: Promise<{ workspaceId: string; inviteCode: string }>;
@@ -17,7 +17,7 @@ export default async function JoinWorkspacePage({
     redirect("/sign-in");
   }
 
-  const { inviteCode, workspaceId } = await params;
+  const { workspaceId } = await params;
 
   const workspace = await getWorkspaceInfo({ workspaceId });
 
