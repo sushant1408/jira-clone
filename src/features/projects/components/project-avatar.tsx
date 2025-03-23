@@ -30,7 +30,7 @@ const ProjectAvatar = ({
     <Avatar className={cn("size-5 rounded-md", className)}>
       <AvatarFallback
         className={cn(
-          "rounded-md text-white bg-blue-600 font-semibold text-sm uppercase",
+          "rounded-md text-white bg-[#579DFF] font-semibold text-sm uppercase",
           fallabackClassName
         )}
       >

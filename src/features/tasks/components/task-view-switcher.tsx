@@ -11,8 +11,8 @@ import { useGetTasks } from "../api/use-get-tasks";
 import { useCreateTaskModal } from "../hooks/use-create-task-modal";
 import { useTaskFilters } from "../hooks/use-task-filters";
 import { DataFilters } from "./data-filters";
-import { DataTable } from "./table-view/data-table";
 import { columns } from "./table-view/columns";
+import { DataTable } from "./table-view/data-table";
 
 const TaskViewSwitcher = () => {
   const [{ assigneeId, dueDate, projectId, search, status }] = useTaskFilters();

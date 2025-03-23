@@ -14,4 +14,23 @@ const createTaskSchema = z.object({
     .optional(),
 });
 
-export { createTaskSchema };
+const updateTaskSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .nonempty("Name must contain at least 1 character(s)")
+    .optional(),
+  status: z
+    .nativeEnum(TaskStatus, { required_error: "Status is required" })
+    .optional(),
+  workspaceId: z.string().trim().nonempty("Required"),
+  projectId: z.string().trim().nonempty("Required").optional(),
+  dueDate: z.coerce.date().optional(),
+  assigneeId: z.string().trim().nonempty("Required").optional(),
+  description: z
+    .string()
+    .max(2048, "Description must contain at most 2048 character(s)")
+    .optional(),
+});
+
+export { createTaskSchema, updateTaskSchema };

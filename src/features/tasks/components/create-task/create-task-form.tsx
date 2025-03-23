@@ -23,14 +23,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { MemberAvatar } from "@/features/members/components/member-avatar";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { cn } from "@/lib/utils";
-import { useCreateTask } from "../api/use-create-task";
-import { createTaskSchema } from "../form-schemas";
-import { TaskStatus } from "../types";
-import { Textarea } from "@/components/ui/textarea";
+import { useCreateTask } from "../../api/use-create-task";
+import { createTaskSchema } from "../../form-schemas";
+import { TaskStatus } from "../../types";
 
 interface CreateTaskFormProps {
   onCancel?: () => void;

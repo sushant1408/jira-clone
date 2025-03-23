@@ -4,7 +4,8 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { Navbar } from "@/components/navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { CreateProjectModal } from "@/features/projects/components/create-project-modal";
-import { CreateTaskModal } from "@/features/tasks/components/create-task-modal";
+import { CreateTaskModal } from "@/features/tasks/components/create-task/create-task-modal";
+import { EditTaskModal } from "@/features/tasks/components/edit-task/edit-task-modal";
 import { CreateWorkspaceModal } from "@/features/workspaces/components/create-workspace-modal";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
@@ -13,6 +14,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       <CreateWorkspaceModal />
       <CreateProjectModal />
       <CreateTaskModal />
+      <EditTaskModal />
 
       <div className="flex w-full h-full">
         <SidebarProvider>
