@@ -26,8 +26,6 @@ const DatePicker = ({
   className,
   placeholder = "Select date",
 }: DatePickerProps) => {
-  const [date, setDate] = useState<Date>();
-
   return (
     <Popover>
       <PopoverTrigger asChild>
