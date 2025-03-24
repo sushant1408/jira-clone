@@ -14,6 +14,7 @@ import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { useTaskFilters } from "../hooks/use-task-filters";
 import { TaskStatus } from "../types";
 import { DatePicker } from "@/components/date-picker";
+import { useProjectId } from "@/features/projects/hooks/use-project-id";
 
 interface DataFiltersProps {
   hideProjectFilter?: boolean;
@@ -21,6 +22,7 @@ interface DataFiltersProps {
 
 const DataFilters = ({ hideProjectFilter }: DataFiltersProps) => {
   const workspaceId = useWorkspaceId();
+  const paramProjectId = useProjectId();
 
   const { data: projects, isLoading: isProjectsLoading } = useGetProjects({
     workspaceId,

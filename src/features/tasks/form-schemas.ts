@@ -23,7 +23,7 @@ const updateTaskSchema = z.object({
   status: z
     .nativeEnum(TaskStatus, { required_error: "Status is required" })
     .optional(),
-  workspaceId: z.string().trim().nonempty("Required"),
+  workspaceId: z.string().trim().nonempty("Required").optional(),
   projectId: z.string().trim().nonempty("Required").optional(),
   dueDate: z.coerce.date().optional(),
   assigneeId: z.string().trim().nonempty("Required").optional(),

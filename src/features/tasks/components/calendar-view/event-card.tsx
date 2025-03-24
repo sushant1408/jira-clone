@@ -48,7 +48,7 @@ const EventCard = ({
           statusColorMap[status]
         )}
       >
-        <p>{title}</p>
+        <p className="line-clamp-2">{title}</p>
         <div className="flex items-center gap-x-1">
           <MemberAvatar name={assignee?.name} fallbackClassName="text-[10px]" />
           <div className="size-1 rounded-full bg-neutral-300" />
