@@ -7,14 +7,14 @@ interface ProjectAvatarProps {
   image?: string;
   name: string;
   className?: string;
-  fallabackClassName?: string;
+  fallbackClassName?: string;
 }
 
 const ProjectAvatar = ({
   name,
   className,
   image,
-  fallabackClassName,
+  fallbackClassName,
 }: ProjectAvatarProps) => {
   if (image) {
     return (
@@ -31,7 +31,7 @@ const ProjectAvatar = ({
       <AvatarFallback
         className={cn(
           "rounded-md text-white bg-[#579DFF] font-semibold text-sm uppercase",
-          fallabackClassName
+          fallbackClassName
         )}
       >
         {name.charAt(0)}

@@ -50,7 +50,7 @@ const Projects = () => {
                       name={item.name}
                       image={item.imageUrl}
                       className="rounded-sm"
-                      fallabackClassName="rounded-sm"
+                      fallbackClassName="rounded-sm"
                     />
                     <span>{item.name}</span>
                   </SidebarMenuButton>

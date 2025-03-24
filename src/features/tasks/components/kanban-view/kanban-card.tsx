@@ -36,7 +36,7 @@ const KanbanCard = ({ task }: KanbanCardProps) => {
         <ProjectAvatar
           name={task.project.name}
           image={task.project.imageUrl}
-          fallabackClassName="rounded-sm text-[10px]"
+          fallbackClassName="rounded-sm text-[10px]"
           className="rounded-sm"
         />
         <span className="text-xs font-medium">{task.project.name}</span>

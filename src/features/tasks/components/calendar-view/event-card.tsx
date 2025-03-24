@@ -56,7 +56,7 @@ const EventCard = ({
             name={project?.name}
             image={project?.imageUrl}
             className="rounded-sm"
-            fallabackClassName="rounded-sm text-[10px]"
+            fallbackClassName="rounded-sm text-[10px]"
           />
         </div>
       </div>

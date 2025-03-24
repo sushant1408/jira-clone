@@ -82,7 +82,7 @@ const CreateProjectForm = ({ onCancel }: CreateProjectFormProps) => {
       <CardContent className="px-7">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="flex flex-col gap-y-4 ">
+            <div className="flex flex-col gap-y-4">
               <FormField
                 control={form.control}
                 name="name"

@@ -6,7 +6,7 @@ import { z } from "zod";
 import { DATABASE_ID, MEMBERS_ID } from "@/config/db-constants";
 import { createAdminClient } from "@/lib/appwrite";
 import { sessionMiddlware } from "@/lib/session-middleware";
-import { MemberRole } from "../types";
+import { Member, MemberRole } from "../types";
 import { getMember } from "../utils";
 
 const app = new Hono()
@@ -36,7 +36,7 @@ const app = new Hono()
         return c.json({ error: "Unauthorized" }, 401);
       }
 
-      const members = await databases.listDocuments(DATABASE_ID, MEMBERS_ID, [
+      const members = await databases.listDocuments<Member>(DATABASE_ID, MEMBERS_ID, [
         Query.equal("workspaceId", workspaceId),
       ]);
 
