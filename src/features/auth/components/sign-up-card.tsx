@@ -24,6 +24,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
 import { useRegister } from "../api/use-register";
 import { signupSchema } from "../form-schemas";
 
@@ -123,19 +124,21 @@ const SignUpCard = () => {
           variant="secondary"
           size="lg"
           className="w-full"
+          onClick={() => signUpWithGoogle()}
           disabled={isPending}
         >
           <FcGoogle className="size-5" />
-          Login with Google
+          Register with Google
         </Button>
         <Button
           variant="secondary"
           size="lg"
           className="w-full"
+          onClick={() => signUpWithGithub()}
           disabled={isPending}
         >
           <FaGithub className="size-5" />
-          Login with Github
+          Register with Github
         </Button>
       </CardContent>
       <div className="px-7">

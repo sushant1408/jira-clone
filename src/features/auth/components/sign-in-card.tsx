@@ -18,6 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { signUpWithGithub, signUpWithGoogle } from "@/lib/oauth";
 import { useLogin } from "../api/use-login";
 import { loginSchema } from "../form-schemas";
 
@@ -80,7 +81,12 @@ const SignInCard = () => {
               )}
             />
 
-            <Button type="submit" disabled={isPending} size="lg" className="w-full">
+            <Button
+              type="submit"
+              disabled={isPending}
+              size="lg"
+              className="w-full"
+            >
               Login
             </Button>
           </form>
@@ -94,6 +100,7 @@ const SignInCard = () => {
           variant="secondary"
           size="lg"
           className="w-full"
+          onClick={() => signUpWithGoogle()}
           disabled={isPending}
         >
           <FcGoogle className="size-5" />
@@ -103,6 +110,7 @@ const SignInCard = () => {
           variant="secondary"
           size="lg"
           className="w-full"
+          onClick={() => signUpWithGithub()}
           disabled={isPending}
         >
           <FaGithub className="size-5" />
