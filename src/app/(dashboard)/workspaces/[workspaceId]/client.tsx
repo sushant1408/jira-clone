@@ -89,7 +89,7 @@ const TaskList = ({ data, total }: { data: Task[]; total: number }) => {
                   <CardContent className="p-4">
                     <p className="text-lg font-medium truncate">{task.name}</p>
                     <div className="flex items-center gap-x-2">
-                      <p className="">{task.project?.name}</p>
+                      <p className="text-sm">{task.project?.name}</p>
                       <div className="size-1 rounded-full bg-neutral-300" />
                       <div className="text-sm text-muted-foreground flex items-center">
                         <CalendarIcon className="size-3 mr-1" />
