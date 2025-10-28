@@ -2,6 +2,31 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Environment Setup
+
+### Prerequisites
+
+Before running the project, you need to set up an Appwrite account and obtain API credentials:
+
+1. **Appwrite** (Backend Database & Authentication)
+   - Create account at https://cloud.appwrite.io
+   - Create a new project
+   - Set up collections for: Workspaces, Projects, Tasks, Members
+   - Create a storage bucket for images
+   - Generate a private API key for server-side operations
+
+### Environment Variables
+
+Copy `.env.example` to `.env` and fill in your Appwrite credentials:
+
+```bash
+cp .env.example .env
+```
+
+Then update `.env` with your actual Appwrite credentials:
+
+**Important**: Never commit `.env` to version control. Use `.env.example` to document required variables without exposing secrets.
+
 ## Project Overview
 
 This is a **Jira Clone** - a full-stack project management application built with Next.js. It's a SaaS-style workspace-based tool with projects, tasks, and team collaboration features.
@@ -224,3 +249,44 @@ Recent commits indicate active work on:
 - Workspace/project management: settings, member invites
 - OAuth authentication
 - UI polish and component refactoring
+
+## Libraries & Dependencies
+
+### Frontend Libraries
+- **next** - React framework with App Router and SSR
+- **react** & **react-dom** - Core React library
+- **typescript** - Static type checking
+- **tailwindcss** - Utility-first CSS framework
+- **@radix-ui/** - Headless UI component library (buttons, dialogs, dropdowns, etc.)
+- **shadcn/ui** - Pre-built Radix UI components with Tailwind styling
+- **lucide-react** - Icon library with React components
+
+### Data Fetching & State Management
+- **@tanstack/react-query** - Server state management and caching
+- **nuqs** - URL search params state management
+- **react-hook-form** - Lightweight form state management
+- **zod** - TypeScript-first schema validation
+
+### Backend & API
+- **hono** - Lightweight web framework for API routes
+- **hono/vercel** - Vercel serverless adapter for Hono
+- **node-appwrite** - Official Appwrite SDK for Node.js
+- **@hono/zod-validator** - Zod validation middleware for Hono
+
+### UI & Visualization
+- **recharts** - Composable charting library for analytics
+- **react-big-calendar** - Calendar view component for scheduling
+- **date-fns** - Modern date utility library
+- **@hello-pangea/dnd** - Drag-and-drop library for kanban boards
+
+### Form & Input Handling
+- **react-hook-form** - Efficient form state management
+- **zod** - Schema validation with TypeScript support
+
+### Development Tools
+- **eslint** - Code linting
+- **@types/node** - TypeScript types for Node.js
+- **@types/react** - TypeScript types for React
+
+### Database & Backend Services
+- **Appwrite** - Open-source backend-as-a-service for authentication, database, and storage
